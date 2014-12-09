@@ -1,0 +1,24 @@
+{
+    "name": "yii2mod/ftp",
+    "type": "library",
+    "description": "A flexible FTP and SSL-FTP client for PHP. This lib provides helpers easy to use to manage the remote files.",
+    "license": "MIT",
+    "keywords": [
+        "yii2",
+        "extension",
+        "ftp",
+        "sftp",
+        "ssl-ftp",
+        "ssl",
+        "file",
+        "server",
+        "lib",
+        "helper"
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-0": {"yii2mod\ftp": ""}
+    }
+}
