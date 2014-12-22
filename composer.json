@@ -19,6 +19,8 @@
         "php": ">=5.4"
     },
     "autoload": {
-        "psr-0": {"yii2mod\ftp": ""}
+        "psr-4": {
+            "yii2mod\\ftp\\": ""
+        }
     }
 }
