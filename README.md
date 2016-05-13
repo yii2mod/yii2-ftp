@@ -1,3 +1,28 @@
+FTP Client for Yii2
+===================
+
+[![Latest Stable Version](https://poser.pugx.org/yii2mod/yii2-ftp/v/stable)](https://packagist.org/packages/yii2mod/yii2-ftp) [![Total Downloads](https://poser.pugx.org/yii2mod/yii2-ftp/downloads)](https://packagist.org/packages/yii2mod/yii2-ftp) [![License](https://poser.pugx.org/yii2mod/yii2-ftp/license)](https://packagist.org/packages/yii2mod/yii2-ftp)
+
+Installation
+------------
+
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/). 
+
+Either run
+
+```
+php composer.phar require --prefer-dist yii2mod/yii2-ftp "*"
+```
+
+or add
+
+```json
+"yii2mod/yii2-ftp": "*"
+```
+
+to the require section of your composer.json.
+
+
 ## Getting Started
 
 Connect to a server FTP :
