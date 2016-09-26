@@ -650,6 +650,23 @@ class FtpClient implements \Countable
                 }
                 continue;
             }
+            
+            // $chunks[8] and up contains filename (multiple elements if filename contains spaces)
+            // up to last element or element containing '->' (if type is 'link')
+            $target = '';
+            $filename = '';
+            $linkArrowElement = array_search('->', $chunks);
+            if ($linkArrowElement !== false) {
+                $filenameChunks = array_slice($chunks, 8, count($chunks) - $linkArrowElement -1);
+                $filename = implode(' ', $filenameChunks);
+                $targetChunks = array_slice($chunks, $linkArrowElement +1);
+                $target = implode(' ', $targetChunks);
+            } else {
+                $filenameChunks = array_slice($chunks, 8);
+                $filename = implode(' ', $filenameChunks);
+            }
+            
+            
             $item = [
                 'permissions' => $chunks[0],
                 'number' => $chunks[1],
@@ -659,11 +676,11 @@ class FtpClient implements \Countable
                 'month' => $chunks[5],
                 'day' => $chunks[6],
                 'time' => $chunks[7],
-                'name' => $chunks[8],
+                'name' => $filename,
                 'type' => $this->rawToType($chunks[0]),
             ];
             if ($item['type'] == 'link') {
-                $item['target'] = $chunks[10]; // 9 is "->"
+                $item['target'] = $target;
             }
             // if the key is not the path, behavior of ftp_rawlist() PHP function
             if (is_int($key) || false === strpos($key, $item['name'])) {
