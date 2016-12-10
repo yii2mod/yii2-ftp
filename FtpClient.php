@@ -146,6 +146,35 @@ class FtpClient implements \Countable
     }
 
     /**
+     * Download files
+     *
+     * @param  string $source_directory
+     * @param  string $target_directory
+     * @param  int    $mode
+     *
+     * @return FtpClient
+     */
+    public function getAll($source_directory, $target_directory, $mode = FTP_BINARY)
+    {
+        $d = $this->scanDir($source_directory);
+
+        // do this for each file in the directory
+        foreach($d as $file) {
+            $new_source_directory = $source_directory . '/' . $file['name'];
+            $new_target_directory = $target_directory . '/' . $file['name'];
+            if($file['type'] == 'directory'){
+                if(!is_dir($new_target_directory)){
+                    mkdir($new_target_directory);
+                }
+                $this->getAll($new_source_directory, $new_target_directory);
+            } else {
+                $this->get($new_target_directory, $new_source_directory, $mode);
+            }
+        }
+        return $this;
+    }
+
+    /**
      * Get the connection with the server
      *
      * @return resource
