@@ -52,7 +52,7 @@ class FtpWrapper
     /**
      * Constructor.
      *
-     * @param ressource &$connection The FTP (or SSL-FTP) connection (takes by reference).
+     * @param ressource &$connection The FTP (or SSL-FTP) connection (takes by reference)
      */
     public function __construct(&$connection)
     {
@@ -66,6 +66,7 @@ class FtpWrapper
      * @param  array  $arguments
      *
      * @return mixed
+     *
      * @throws FtpException When the function is not valid
      */
     public function __call($function, array $arguments)
@@ -73,7 +74,6 @@ class FtpWrapper
         $function = 'ftp_' . $function;
 
         if (function_exists($function)) {
-
             array_unshift($arguments, $this->conn);
 
             return call_user_func_array($function, $arguments);
