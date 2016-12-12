@@ -16,10 +16,11 @@
         "helper"
     ],
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "ext-ftp": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "~1.7"
+        "friendsofphp/php-cs-fixer": "~2.0"
     },
     "autoload": {
         "psr-4": {
