@@ -29,6 +29,7 @@ Connect to a server FTP :
 
 ```php
 $ftp = new \yii2mod\ftp\FtpClient();
+$host = 'ftp.example.com';
 $ftp->connect($host);
 $ftp->login($login, $password);
 ```
@@ -39,6 +40,7 @@ Connect to a server FTP via SSL (on port 22 or other port) :
 
 ```php
 $ftp = new \yii2mod\ftp\FtpClient();
+$host = 'ftp.example.com';
 $ftp->connect($host, true, 22);
 $ftp->login($login, $password);
 ```
