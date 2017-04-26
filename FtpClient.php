@@ -495,13 +495,13 @@ class FtpClient implements \Countable
      *
      * @param string $directory
      * @param bool $recursive
-     * @param bool $include_hidden
+     * @param bool $includeHidden
      *
      * @return array
      */
-    public function scanDir($directory = '.', $recursive = false, $include_hidden = false)
+    public function scanDir($directory = '.', $recursive = false, $includeHidden = false)
     {
-         return $this->parseRawList($this->rawlist($directory, $recursive, $include_hidden));
+         return $this->parseRawList($this->rawlist($directory, $recursive, $includeHidden));
     }
 
     /**
@@ -639,18 +639,22 @@ class FtpClient implements \Countable
      *
      * @param string $directory The directory, by default is the current directory
      * @param bool $recursive
-     * @param bool $include_hidden
+     * @param bool $includeHidden
      *
      * @return array
      *
      * @throws FtpException
      */
-    public function rawlist($directory = '.', $recursive = false, $include_hidden = false)
+    public function rawlist($directory = '.', $recursive = false, $includeHidden = false)
     {
         if (!$this->isDir($directory)) {
             throw new FtpException('"' . $directory . '" is not a directory.');
         }
-        if ($include_hidden) $directory = "-la $directory";
+
+        if ($includeHidden) {
+            $directory = "-la $directory";
+        }
+
         $list = $this->ftp->rawlist($directory);
         $items = [];
         if (false == $recursive) {

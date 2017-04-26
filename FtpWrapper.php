@@ -30,7 +30,7 @@ namespace yii2mod\ftp;
  * @method string pwd() pwd() Returns the current directory name
  * @method bool quit() quit() Closes an FTP connection
  * @method array raw() raw(string $command) Sends an arbitrary command to an FTP server
- * @method array rawlist() rawlist(string $directory, bool $recursive = false, bool $include_hidden = false) Returns a detailed list of files in the given directory
+ * @method array rawlist() rawlist(string $directory, bool $recursive = false, bool $includeHidden = false) Returns a detailed list of files in the given directory
  * @method bool rename() rename(string $oldname, string $newname) Renames a file or a directory on the FTP server
  * @method bool rmdir() rmdir(string $directory) Removes a directory
  * @method bool set_option() set_option(int $option, mixed $value) Set miscellaneous runtime FTP options
