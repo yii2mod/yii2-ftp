@@ -160,12 +160,13 @@ class FtpClient implements \Countable
      * @param string $source_directory
      * @param string $target_directory
      * @param int $mode
+     * @param bool $include_hidden
      *
      * @return FtpClient
      */
-    public function getAll($source_directory, $target_directory, $mode = FTP_BINARY)
+    public function getAll($source_directory, $target_directory, $mode = FTP_BINARY, $include_hidden = false)
     {
-        $d = $this->scanDir($source_directory);
+        $d = $this->scanDir($source_directory, false, $include_hidden);
 
         // do this for each file in the directory
         foreach ($d as $file) {
@@ -175,7 +176,7 @@ class FtpClient implements \Countable
                 if (!is_dir($new_target_directory)) {
                     mkdir($new_target_directory);
                 }
-                $this->getAll($new_source_directory, $new_target_directory);
+                $this->getAll($new_source_directory, $new_target_directory, $mode, $include_hidden);
             } else {
                 $this->get($new_target_directory, $new_source_directory, $mode);
             }
@@ -509,12 +510,13 @@ class FtpClient implements \Countable
      *
      * @param string $directory The directory, by default is the current directory
      * @param bool $recursive true by default
+     * @param bool $include_hidden false by default
      *
      * @return int The size in bytes
      */
-    public function dirSize($directory = '.', $recursive = true)
+    public function dirSize($directory = '.', $recursive = true, $include_hidden = false)
     {
-        $items = $this->scanDir($directory, $recursive);
+        $items = $this->scanDir($directory, $recursive, $include_hidden);
         $size = 0;
         foreach ($items as $item) {
             $size += (int)$item['size'];
@@ -529,14 +531,15 @@ class FtpClient implements \Countable
      * @param string $directory The directory, by default is the current directory
      * @param string|null $type The type of item to count (file, directory, link, unknown)
      * @param bool $recursive true by default
+     * @param bool $include_hidden
      *
      * @return int
      */
-    public function count($directory = '.', $type = null, $recursive = true)
+    public function count($directory = '.', $type = null, $recursive = true, $include_hidden = false)
     {
         $items = (($type === null)
             ? $this->nlist($directory, $recursive)
-            : $this->scanDir($directory, $recursive));
+            : $this->scanDir($directory, $recursive, $include_hidden));
 
         $count = 0;
         foreach ($items as $item) {
