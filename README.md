@@ -1,5 +1,10 @@
-FTP Client for Yii2
-===================
+<p align="center">
+    <a href="https://github.com/yiisoft" target="_blank">
+        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    </a>
+    <h1 align="center">FTP Client for Yii 2</h1>
+    <br>
+</p>
 
 [![Latest Stable Version](https://poser.pugx.org/yii2mod/yii2-ftp/v/stable)](https://packagist.org/packages/yii2mod/yii2-ftp) [![Total Downloads](https://poser.pugx.org/yii2mod/yii2-ftp/downloads)](https://packagist.org/packages/yii2mod/yii2-ftp) [![License](https://poser.pugx.org/yii2mod/yii2-ftp/license)](https://packagist.org/packages/yii2mod/yii2-ftp)
 
@@ -16,7 +21,7 @@ php composer.phar require --prefer-dist yii2mod/yii2-ftp "*"
 
 or add
 
-```json
+```
 "yii2mod/yii2-ftp": "*"
 ```
 
