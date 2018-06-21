@@ -659,6 +659,11 @@ class FtpClient implements \Countable
         }
 
         $list = $this->ftp->rawlist($directory);
+        if (false === $list) {
+            // $list can be false, convert to empty array
+            $list = [];
+        }
+        
         $items = [];
         if (false == $recursive) {
             foreach ($list as $path => $item) {
