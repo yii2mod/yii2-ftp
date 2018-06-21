@@ -663,7 +663,6 @@ class FtpClient implements \Countable
             // $list can be false, convert to empty array
             $list = [];
         }
-
         
         $items = [];
         if (false == $recursive) {
