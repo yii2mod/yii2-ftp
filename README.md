@@ -8,10 +8,12 @@
 
 [![Latest Stable Version](https://poser.pugx.org/yii2mod/yii2-ftp/v/stable)](https://packagist.org/packages/yii2mod/yii2-ftp) [![Total Downloads](https://poser.pugx.org/yii2mod/yii2-ftp/downloads)](https://packagist.org/packages/yii2mod/yii2-ftp) [![License](https://poser.pugx.org/yii2mod/yii2-ftp/license)](https://packagist.org/packages/yii2mod/yii2-ftp)
 
+> yii2-ftp is a fork of [Nicolab/php-ftp-client](https://github.com/Nicolab/php-ftp-client) v1.2.0
+
 Installation
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/). 
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
 Either run
 
