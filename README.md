@@ -32,7 +32,7 @@ to the require section of your composer.json.
 
 ## Getting Started
 
-### Configuration in config/main.php
+Configuration in config/main.php
 
 ```php
     'components' => [
