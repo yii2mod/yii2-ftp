@@ -32,24 +32,29 @@ to the require section of your composer.json.
 
 ## Getting Started
 
+Configuration in config/main.php
+
+```php
+    'components' => [
+        ...
+        'ftp'         => [
+            'class'     => \yii2mod\ftp\components\FtpClient::class,
+            'host'      => 'ftp.site.com',
+            'user'      => 'root',
+            'password'  => '123',
+            'port'      => 21,
+            'ssl'       => true,
+            'passive'   => true,
+            'timeout'   => 90,
+        ],
+        ...
+    ];
+```
+
 Connect to a server FTP :
 
 ```php
-$ftp = new \yii2mod\ftp\FtpClient();
-$host = 'ftp.example.com';
-$ftp->connect($host);
-$ftp->login($login, $password);
-```
-
-OR
-
-Connect to a server FTP via SSL (on port 22 or other port) :
-
-```php
-$ftp = new \yii2mod\ftp\FtpClient();
-$host = 'ftp.example.com';
-$ftp->connect($host, true, 22);
-$ftp->login($login, $password);
+    $ftp = \Yii::$app->ftp->connect();
 ```
 
 Note: The connection is implicitly closed at the end of script execution (when the object is destroyed). Therefore it is unnecessary to call `$ftp->close()`, except for an explicit re-connection.
